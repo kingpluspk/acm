@@ -18,7 +18,7 @@
     }
     
     $arr = [8, 6, 6, 7, 5, 9];
-    $arr = insertSort($arr);
+    $arr = insert_sort($arr);
 
     var_dump($arr);
 
