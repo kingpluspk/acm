@@ -1,0 +1,36 @@
+<?php
+    class Node{
+        public $data = null;
+        public $next = null;
+    }
+    
+    function list_loop($head){
+        $fast = $head;
+        $slow = $head;
+
+        while($fast && $fast->next){
+            $slow = $slow->next;    // 慢指针跑一步
+            $fast = $fast->next->next;  // 快指针跑两步
+            if($fast == $slow)  // 快慢指针相遇，存在环；否则，不存在环
+                break;
+        }
+        
+        return !($fast == null || $fast->next == null);
+    }
+
+    $head   = new Node();
+    $one    = new Node();
+    $two    = new Node();
+    $three  = new Node();
+    $head->data = 0;
+    $one->data  = 1;
+    $two->data  = 2;
+    $three->data = 3;
+    $head->next = $one;
+    $one->next  = $two;
+    $two->next  = $three;
+    $three->next = $head;
+
+    var_dump(list_loop($head));
+
+
