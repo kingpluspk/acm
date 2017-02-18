@@ -22,7 +22,7 @@
     }
 
     $arr = [8, 6, 6, 7, 5, 9];
-    $arr = selectSort($arr);
+    $arr = select_sort($arr);
 
     var_dump($arr);
 
