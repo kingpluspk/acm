@@ -7,6 +7,7 @@
             if($pos === false){
                 $arr[]  = $string;
                 $string = '';
+                break;
             } else{
                 $arr[]  = substr($string, 0, $pos);
                 $string = substr($string, $pos+$delimiterLen);
