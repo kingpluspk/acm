@@ -28,7 +28,7 @@
     */
     function adjust_heap(&$arr, $maxLen, $node){
         $lchild = 2 * $node + 1;
-        $rchild = 2 * $node + 1;
+        $rchild = 2 * $node + 2;
 
         $maxNode = $node; // 设置当前节点为最大值的节点,方便后边最大值节点变化时与当前节点比较,确认是否需要交换
         while($lchild < $maxLen || $rchild < $maxLen){
@@ -41,7 +41,7 @@
                 list($arr[$maxNode], $arr[$node]) = array($arr[$node], $arr[$maxNode]);
                 $node = $maxNode; // 迭代被替换的子节点，使其符合堆的特性
                 $lchild = 2 * $node + 1;
-                $rchild = 2 * $node + 1;
+                $rchild = 2 * $node + 2;
             } else{
                 break; // 没有发生交换，即符合堆的特性，直接退出
             }
