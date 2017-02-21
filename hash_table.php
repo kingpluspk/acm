@@ -51,7 +51,7 @@
             	}
             	$current = $current->nextNode;
         	}
-        	return null;
+        	return false;
     	}
 
     	public function getList(){
