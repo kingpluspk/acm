@@ -8,20 +8,20 @@
         if(count($arr) <= 1) // 递归结束的条件
             return $arr;
         $pivot = $arr[0];
-        $left_arr  = array();
-        $right_arr = array();
+        $leftArr  = array();
+        $rightArr = array();
         for($i = 1; $i < count($arr); $i++){
             if($arr[$i] <= $pivot){
-                $left_arr[] = $arr[$i];
+                $leftArr[] = $arr[$i];
             } else{
-                $right_arr[] = $arr[$i];
+                $rightArr[] = $arr[$i];
             }
         }
 
-        $left_arr  = quick_sort($left_arr);
-        $right_arr = quick_sort($right_arr);
+        $leftArr  = quick_sort($leftArr);
+        $rightArr = quick_sort($rightArr);
 
-        return array_merge($left_arr, array($pivot), $right_arr);
+        return array_merge($leftArr, array($pivot), $rightArr);
 
     }
     $arr = [8, 7, 5, 6, 8];
