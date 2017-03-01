@@ -1,13 +1,13 @@
 <?php
     class HashNode{
-        private $_key = null;
-        private $_value = null;
-        private $_nextNode = null;
+        public $key = null;
+        public $value = null;
+        public $nextNode = null;
 
         public function __construct($key, $value, $nextNode = null){
-            $this->_key     = $key;
-            $this->_value   = $value;
-            $this->_nextNode = $nextNode;
+            $this->key     = $key;
+            $this->value   = $value;
+            $this->nextNode = $nextNode;
         }
     }
 
@@ -20,7 +20,7 @@
         	$this->_arr = new SplFixedArray($this->_size);
     	}
         
-        // key-value的映射规则
+        // 映射规则
     	private function simpleHash($key){
         	$asciiTotal = 0;
         	for($i=0; $i<strlen($key); $i++){
@@ -61,8 +61,12 @@
 
     $arr = new HashTable();
 	for($i=0; $i<15; $i++){
-    	$arr->set('key'.$i, 'value'.$i);
+    	$arr->set('K'.$i, 'V'.$i);
 	}
 	print_r($arr->getList());
+    echo "========\n";
+    
+    var_dump($arr->get('K8'));
+    echo "========\n";
 
 
