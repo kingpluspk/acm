@@ -19,11 +19,14 @@
             asort($keys_value_arr);
 
         reset($keys_value_arr);
+        echo 'the keys_value_arr: ' . "\n";
+        print_r($keys_value_arr);        
+        
         $key_sort_arr = array();
         foreach($keys_value_arr as $k => $v){
             $key_sort_arr[$k] = $k;
         }
-
+        
         $new_arr = array();
         foreach($key_sort_arr as $k => $v){
             $new_arr[$k] = $arr[$v];
@@ -37,8 +40,11 @@
         array(7, 6),
         array(6, 7),
     );
+    echo 'the raw array: ' . "\n";
+    print_r($arr);
 
     $arr = array_sort($arr, 1, 1); 
+    echo 'the sorted array: ' . "\n";
     print_r($arr);
 
 
