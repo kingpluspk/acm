@@ -1,6 +1,6 @@
 <?php
     /**
-    * 生成Next数组，该数组存放着需要匹配的字符串每个位置的最长相同前缀后缀长度k
+    * 生成模式匹配表（Next数组），该数组存放着需要匹配的字符串每个位置的最长相同前缀后缀长度k
     * "前缀"指除了最后一个字符以外，一个字符串的全部头部组合；
     * "后缀"指除了第一个字符以外，一个字符串的全部尾部组合；
     * kmp算法的复杂度是O(n+m)(均摊分析)
@@ -21,7 +21,10 @@
 
             $next[$i] = $k;
         }
+        
+        echo 'the next array: ' . "\n";
         print_r($next);
+
         return $next;
     }
     
@@ -39,26 +42,26 @@
             // 如果第i+1个位置相同，接着比较第i+2个位置；
             // 如果第i+1个位置不同，则出现不匹配，我们依旧要将长度为i的字符串分割，获得其最长相同前缀后缀长度next[i]，进行位移，
             // 已经匹配的字符串patternStr长度 - 最长相同前缀后缀长度next[i]；
-            // 具体实现： 当不匹配时，不断递归模式匹配表next，知道获取新的相等的字符或者回到首字符
+            // 具体实现： 当不匹配时，不断递归模式匹配表next，直到获取新的相等的字符或者回到首字符
             while($pi > 0 && $patternStr[$pi] != $searchStr[$i])
                 $pi = $next[$pi-1];
-            echo 'i: ' . $i . ' vs ' . 'pi: ' . $pi . "\n";
-            echo 'sstr: ' . $searchStr[$i] . ' vs ' . 'pstr: ' . $patternStr[$pi] . "\n";
+            // echo 'i: ' . $i . ' vs ' . 'pi: ' . $pi . "\n";
+            // echo 'sstr: ' . $searchStr[$i] . ' vs ' . 'pstr: ' . $patternStr[$pi] . "\n";
             
             if($patternStr[$pi] == $searchStr[$i])
                 $pi++;
 
              if($pi == $patternLen){
-                $index = $i - $patternLen + 1;
+                $index = $i - ($pi - 1) + 1; // $pi - 1 恢复当$patternStr[$pi] = $searchStr[$i]时pi的位置
                 return $index;
              }
-             echo '==' . "\n\n";
+             // echo '==' . "\n\n";
         }
 
         return -1;
     }
 
-    $searchStr  = 'BBCABCDABABCDABCABCDABD'; // strlen = 22, 命中的下标为17（下标从0开始）
+    $searchStr  = 'BBCABCDABABCDABCABCDABD'; // strlen = 23, 命中的下标为17（下标从0开始）
     $patternStr = 'ABCDABD'; // strlen = 7
     echo 'searchStr:  ' . $searchStr . "\n";
     echo 'patternStr: ' . $patternStr . "\n";
