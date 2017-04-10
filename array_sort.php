@@ -13,6 +13,7 @@
         foreach($arr as $k => $v){
             $keys_value_arr[$k] = $v[$key]; // 取第二维的值
         }
+        
         if($order == 0)
             arsort($keys_value_arr);
         else
@@ -22,14 +23,9 @@
         echo 'the keys_value_arr: ' . "\n";
         print_r($keys_value_arr);        
         
-        $key_sort_arr = array();
-        foreach($keys_value_arr as $k => $v){
-            $key_sort_arr[$k] = $k;
-        }
-        
         $new_arr = array();
-        foreach($key_sort_arr as $k => $v){
-            $new_arr[$k] = $arr[$v];
+        foreach($keys_value_arr as $k => $v){
+            $new_arr[$k] = $arr[$k];
         }
 
         return $new_arr;
